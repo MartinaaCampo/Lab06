@@ -63,7 +63,16 @@ class View:
         pulsante_conferma_responsabile = ft.Button("Conferma", on_click=self.controller.conferma_responsabile)
 
         # Altri Pulsanti da implementare (es. "Mostra" e "Cerca")
-        # TODO
+        self.pulsante_mostra=ft.Button(
+                        content="Mostra",
+                        on_click=self.controller.mostra_strumenti,
+                        style=ft.ButtonStyle(shape=ft.StadiumBorder()),
+                    )
+        self.pulsante_cerca = ft.Button(
+                        content="Cerca",
+                        on_click=self.controller.cerca_strumenti,
+                        style=ft.ButtonStyle(shape=ft.StadiumBorder()),
+                    )
 
         # --- LAYOUT ---
         self.page.add(
@@ -82,10 +91,21 @@ class View:
             ft.Divider(),
 
             # Sezione 3
-            # TODO
+            ft.Row(controls=[
+                ft.Text("Strumenti",size=20),
+                self.pulsante_mostra
+                   ]),
+            self.lista_strumenti,
+            ft.Divider(),
 
             # Sezione 4
-            # TODO
+            ft.Row(controls=[
+                ft.Text("Cerca strumento per tipo", size=20),
+                self.input_tipo_strumento,
+                self.pulsante_cerca
+            ]),
+            self.lista_strumenti_ricerca,
+            ft.Divider(),
         )
 
     def cambia_tema(self, e):
